@@ -1,0 +1,4 @@
+/inc/config.*
+**/config.*
+tasks/*
+temp/*

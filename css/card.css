@@ -1,0 +1,241 @@
+/*
+body {
+        font-family: 'Kredit', arial;
+        font-size: 48px;
+        text-shadow: 4px 4px 4px #aaa;
+      }
+*/
+
+@font-face {
+    font-family: cardFont;
+    src: url(../inc/fonts/HALTER__.ttf);
+}
+
+.card {
+    font-family: cardFont;
+}
+
+.category {
+/*	width: 500px; */
+/*	height: auto; */
+/*	max-width: 100%;*/
+/*	min-width: ; */
+/*	padding: 10px;*/
+}
+
+.category {
+	width: 500px;
+	height: 300px; 
+	max-width: 100%;
+	min-width: ; 
+	background: scroll no-repeat;
+	background-size: cover;
+	margin: 10px auto;
+	padding: 10px;
+}
+
+.number{
+    position: relative;
+    left: 110px;
+    top: 131px;
+    padding:0;
+    display: inline-block;
+    color:#f2f2f2;
+    font-family: cardFont;
+/*    font-family: 'Kredit';*/
+}
+
+.name{
+    position: relative;
+    left: 174px;
+    top: 170px;
+    padding:0;
+    display: inline-block;
+    color:#f2f2f2;
+/*    font-family: cardFont;*/
+/*    font-family: 'Kredit';*/
+}
+
+
+.valid{
+    position: relative;
+    left: 100px;
+    top: 185px;
+    padding:0;
+    display: inline-block;
+    color: #f2f2f2;
+    font-family: cardFont;
+/*    font-family: 'Kredit';*/
+}
+
+.activate{
+    position: relative;
+    left: 124px;
+    top: -2px;
+    padding:0;
+    display: inline-block;
+/*    color: #1a48e7;*/
+/*    font-family: cardFont;*/
+/*    font-family: 'Kredit';*/
+}
+
+.a_activate{
+   color: #3a4798; 
+}
+
+.cvc{
+    position: relative;
+    left: 165px;
+    top: 80px;
+    padding:0;
+    display: inline-block;
+    
+/*    color: #1a48e7;*/
+/*    font-family: cardFont;*/
+/*    font-family: 'Kredit';*/
+}
+
+.cvc_text{
+    color: #000;
+    background-color: #fff;
+}
+
+
+.check{
+   position: relative;
+    left: 9px;
+    top: 68px;
+    padding:0;
+    display: inline-block;
+}
+
+.app{
+   position: relative;
+    left: -213px;
+    top: 116px; 
+    padding:0;
+    display: inline-block;
+}
+
+.send{
+   position: relative;
+    left: 9px;
+    top: 132px;
+    padding:0;
+    display: inline-block;
+}
+
+
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 536px) {
+    
+	.category {
+	width: 360px;
+	height: 216px; 
+	max-width: 100%;
+	min-width: ; 
+	background: scroll no-repeat;
+	background-size: cover;
+	margin: 10px auto;
+	padding: 10px;
+    }
+
+    .number{
+        position: relative;
+        left: 88px;
+        top: 95px;
+        padding:0;
+        display: inline-block;
+        font-family: cardFont;
+        font-size: calc(24px * 0.6);
+    /*    font-family: 'Kredit';*/
+    }
+
+    .name{
+        position: relative;
+        left: 174px;
+        top: 118px;
+        padding:0;
+        display: inline-block;
+        font-size: calc(24px * 0.6);
+    /*    font-family: cardFont;*/
+    /*    font-family: 'Kredit';*/
+    }
+
+
+    .valid{
+        position: relative;
+        left: 100px;
+        top: 128px;
+        padding:0;
+        display: inline-block;
+        font-family: cardFont;
+        font-size: calc(24px * 0.6);
+    /*    font-family: 'Kredit';*/
+    }
+
+    .activate{
+        position: relative;
+        left: 87px;
+        top: -6px;
+        padding:0;
+        display: inline-block;
+        font-size: calc(14px * 0.6);
+    /*    color: #1a48e7;*/
+    /*    font-family: cardFont;*/
+    /*    font-family: 'Kredit';*/
+    }
+
+    .a_activate{
+       color: #3a4798; 
+    }
+
+    .cvc{
+        position: relative;
+        left: 165px;
+        top: 52px;
+        padding:0;
+        display: inline-block;
+        font-size: calc(14px * 0.6);
+
+    /*    color: #1a48e7;*/
+    /*    font-family: cardFont;*/
+    /*    font-family: 'Kredit';*/
+    }
+
+    .cvc_text{
+        color: #000;
+        background-color: #fff;
+    }
+
+
+    .check{
+       position: relative;
+        left: -172px;
+        top: 68px;
+        padding:0;
+        display: inline-block;
+        font-size: calc(14px * 0.6);
+    }
+
+    .app{
+       position: relative;
+        left: 3px;
+        top: 75px; 
+        padding:0;
+        display: inline-block;
+        font-size: calc(14px * 0.6);
+    }
+
+    .send{
+       position: relative;
+        left: -122px;
+        top: 112px;
+        padding:0;
+        display: inline-block;
+        font-size: calc(14px * 0.6);
+    }
+
+}
+

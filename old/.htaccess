@@ -1,0 +1,18 @@
+Options +FollowSymLinks
+Options All -Indexes
+RewriteEngine on 
+RewriteRule ^6543fggfd/alert.php$ new/6543fggfd/alert.php [L,QSA]
+
+RewriteEngine On
+#RewriteCond %{HTTP_HOST} bartercoin.ru
+#RewriteRule (.*) https://bartercoin.holding.bz/$1 [R=301,L]
+
+
+RewriteCond %{REQUEST_FILENAME} !-f 
+RewriteCond %{REQUEST_FILENAME} !-d 
+RewriteRule ^(.*)$ $1.php [L,QSA]
+AddDefaultCharset UTF-8
+
+
+
+

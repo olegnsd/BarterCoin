@@ -53,7 +53,6 @@
                         <? if ($b!=8 and $b!=9) {?>
                         <option value="qiwi">Кошелёк QIWI
                         <option value="ya">Яндекс.Деньги
-                        <option value="webmoney">Webmoney
                         <option value="visa_mastercard">Visa
                         <?} else {?>
                         <option value="payeer">Payeer
@@ -120,20 +119,22 @@
                             $('input[name=target]').attr('value', <?=$card['visa_mastercard']?>);
                             $('.input2').text(<?=$card['visa_mastercard']?>);
                             check_vs_mc();
-                        } else if ($(this).find('option:selected').attr('value') == 'webmoney') {
-                            $('input[name=target]').attr('value', <?=$card['webmoney']?>);
-                            $('.input2').text(<?=$card['webmoney']?>);
-                            wbm_min = 10;
-                            if (<?=$sum?> >
-                            10
-                        )
+                        } 
+		    #else   if ($(this).find('option:selected').attr('value') == 'webmoney') {
+                    #        $('input[name=target]').attr('value', <?=$card['webmoney']?>);
+                    #        $('.input2').text(<?=$card['webmoney']?>);
+                    #        wbm_min = 10;
+                    #        if (<?=$sum?> >
+                    #        10
+                    #    )
+#
+#                            wbm_min = <?=$sum?>;
+#                            $('input[name=sum]').attr('min', '10');
+#                            $('input[name=sum]').val(wbm_min);
+#                            $('#alrt').html('<span class="label label-info">от 10 BCR</span>');
+#                            $('.input3').text('10' + ' БР');
+#                        }
 
-                            wbm_min = <?=$sum?>;
-                            $('input[name=sum]').attr('min', '10');
-                            $('input[name=sum]').val(wbm_min);
-                            $('#alrt').html('<span class="label label-info">от 10 BCR</span>');
-                            $('.input3').text('10' + ' БР');
-                        }
                         else if ($(this).find('option:selected').attr('value') == 'payeer') {
                             $('input[name=target]').attr('value', <?=$card['payeer']?>);
                             $('.input2').text(<?=$card['payeer']?>);

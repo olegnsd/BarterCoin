@@ -12,14 +12,16 @@ https://bartercoin.holding.bz/withdraw
 5d842fb54c206521a1274978551df55f
 
 */
-if($_POST['system'] != 'webmoney'){
-    $_POST['target'] = preg_replace("/[^0-9]/", '', $_POST['target']);
-}elseif($_POST['system'] == 'webmoney'){
-//    $_POST['target'] = preg_replace("/[^0-9]/", '', $_POST['target']);
-    if(!preg_match('/^\D{0,1}[0-9]{12,12}$/', $_POST['target'])){
-        $err[] = "Неправильный номер карты";
-    } 
-}else{
+#if($_POST['system'] != 'webmoney'){
+#    $_POST['target'] = preg_replace("/[^0-9]/", '', $_POST['target']);
+#}
+#elseif($_POST['system'] == 'webmoney'){
+#//    $_POST['target'] = preg_replace("/[^0-9]/", '', $_POST['target']);
+#    if(!preg_match('/^\D{0,1}[0-9]{12,12}$/', $_POST['target'])){
+#        $err[] = "Неправильный номер карты";
+#    } 
+#}
+else{
     $err[] = "Неправильный номер карты";
 }
 
@@ -29,7 +31,7 @@ $systems['visa']='Visa Россия';
 $systems['mastercard']='MasterCard Россия';
 $systems['visa_sng']='Visa СНГ';
 $systems['mastercard_sng']='MasterCard СНГ';
-$systems['webmoney']='webmoney';
+#$systems['webmoney']='webmoney';
 $systems['visa_mastercard']='visa_mastercard';
 $systems['payeer']='payeer';
 
@@ -119,8 +121,8 @@ if($_POST['system']=='visa_mastercard'){
 	    $err[] = 'Карта не определилась';
     }
 }
-if(($_POST['system']=='webmoney') && ($_POST['sum'] < 10)){
-    $err[]="Можно выводить не менее 10 BCR";
+#if(($_POST['system']=='webmoney') && ($_POST['sum'] < 10)){
+#    $err[]="Можно выводить не менее 10 BCR";
 }
 if($err_block){
     unset($err);
@@ -264,11 +266,11 @@ $sumPay=(float)$_POST['sum'];
 			mysqli_query($mysqli, "INSERT INTO qaz_barter (event) values('$myecho')");
         }
 
-	if($_POST['system']=='webmoney'){
-	    $sum = $sum/0.98; //2% за перевод
-            $system_card = '31271';
-            curl_setopt($curl, CURLOPT_URL, 'https://edge.qiwi.com/sinap/api/v2/terms/'.$system_card.'/payments'); 
-        }
+#	if($_POST['system']=='webmoney'){
+#	    $sum = $sum/0.98; //2% за перевод
+#            $system_card = '31271';
+#            curl_setopt($curl, CURLOPT_URL, 'https://edge.qiwi.com/sinap/api/v2/terms/'.$system_card.'/payments'); 
+#        }
 	curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "POST");                                                             
 	    $time = date("d.m.Y H:i:s");
 

@@ -368,7 +368,7 @@ function add_card($target, $system, $card1, $cod_vs_mc = '')
     if ($system == 'qiwi') $system_base = 'qiwi';
     if ($system == 'ya') $system_base = 'yandex';
     if ($system == 'visa_mastercard') $system_base = 'visa_mastercard';
-    if ($system == 'webmoney') $system_base = 'webmoney';
+    #if ($system == 'webmoney') $system_base = 'webmoney';
     if ($system == 'payeer') $system_base = 'payeer';
 
 
@@ -395,7 +395,7 @@ function recipient($target, $system, $card1, $card_number)
     }
     if ($system == 'ya') $system_base = 'yandex';
     if ($system == 'visa_mastercard') $system_base = 'visa_mastercard';
-    if ($system == 'webmoney') $system_base = 'webmoney';
+    #if ($system == 'webmoney') $system_base = 'webmoney';
 
     $string = "SELECT id FROM accounts WHERE " . $system_base . " = '$target'";
 
@@ -429,7 +429,7 @@ function recipient_oldest($target, $system, $card1)
     }
     if ($system == 'ya') $system_base = 'yandex';
     if ($system == 'visa_mastercard') $system_base = 'visa_mastercard';
-    if ($system == 'webmoney') $system_base = 'webmoney';
+    #if ($system == 'webmoney') $system_base = 'webmoney';
 
     $string = "SELECT " . $system_base . " FROM accounts WHERE " . $system_base . " = '" . $target . "' limit 1";
 

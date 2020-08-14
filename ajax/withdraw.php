@@ -21,9 +21,9 @@ https://bartercoin.holding.bz/withdraw
 #        $err[] = "Неправильный номер карты";
 #    } 
 #}
-else{
-    $err[] = "Неправильный номер карты";
-}
+#else{
+#    $err[] = "Неправильный номер карты";
+#}
 
 $systems['qiwi']='QIWI';
 $systems['ya']='Яндекс';
@@ -123,7 +123,7 @@ if($_POST['system']=='visa_mastercard'){
 }
 #if(($_POST['system']=='webmoney') && ($_POST['sum'] < 10)){
 #    $err[]="Можно выводить не менее 10 BCR";
-}
+#}
 if($err_block){
     unset($err);
     $err[] = $err_block;

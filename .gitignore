@@ -1,4 +1,6 @@
-/inc/config.*
+inc/config.*
 **/config.*
+**/*.swp
+
 tasks/*
 temp/*

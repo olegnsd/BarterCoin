@@ -1,6 +1,6 @@
 <?
 
-$baseHref = '/bc2/';
+$baseHref = '/';
 
 $mysql_conf['host'] = 'localhost';
 $mysql_conf['user'] = 'root';

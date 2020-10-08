@@ -1,13 +1,11 @@
 Options +FollowSymLinks
 Options All -Indexes
-RewriteEngine on 
 php_value short_open_tag 1
 
 
 RewriteEngine On
 #RewriteCond %{HTTP_HOST} bartercoin.ru
 #RewriteRule (.*) https://bartercoin.holding.bz/$1 [R=301,L]
-
 
 RewriteCond %{REQUEST_FILENAME} !-f 
 RewriteCond %{REQUEST_FILENAME} !-d 

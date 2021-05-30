@@ -1,125 +1,22 @@
 <?
-$_SERVER['REMOTE_ADDR']=$_SERVER['HTTP_X_REAL_IP'];
+ini_set('display_errors', 1);
+// $_SERVER['REMOTE_ADDR']=$_SERVER['HTTP_X_REAL_IP'];
+
 require('inc/init.php');
-ini_set('display_errors', 0);
-if($_GET['page']=='')$_GET['page']='index';
-/*function myErrorHandler($errno, $errstr, $errfile, $errline)
-{
-    if (!(error_reporting() & $errno)) {
-        // Этот код ошибки не включен в error_reporting,
-        // так что пусть обрабатываются стандартным обработчиком ошибок PHP
-        return false;
-    }
 
-    switch ($errno) {
-    case E_USER_ERROR:
-        echo "<b>Пользовательская ОШИБКА</b> [$errno] $errstr<br />\n";
-        echo "  Фатальная ошибка в строке $errline файла $errfile";
-        echo ", PHP " . PHP_VERSION . " (" . PHP_OS . ")<br />\n";
-        echo "Завершение работы...<br />\n";
-        exit(1);
-        break;
-
-    case E_USER_WARNING:
-        echo "<b>Пользовательское ПРЕДУПРЕЖДЕНИЕ</b> [$errno] $errstr<br />\n";
-        break;
-
-    case E_USER_NOTICE:
-        echo "<b>Пользовательское УВЕДОМЛЕНИЕ</b> [$errno] $errstr<br />\n";
-        break;
-
-    default:
-        echo "Неизвестная ошибка: [$errno] $errstr<br />\n";
-        break;
-    }
-
-
-    return true;
+if (empty($_GET['page'])) {
+    $_GET['page']='index';
 }
 
-
-
-// переключаемся на пользовательский обработчик
-$old_error_handler = set_error_handler("myErrorHandler");
-*/
-
-
-ob_start();$upd=30;
+ob_start();
 include('inc/template/top.php');
-$no404=false;
-if($_GET['page']=='index'){$no404=true;include('pages/index.php');}
-if($_GET['page']=='send'){$no404=true;include('pages/send.php');}
-if($_GET['page']=='check'){$no404=true;include('pages/check.php');}
-if($_GET['page']=='activate'){$no404=true;include('pages/activate.php');}
-if($_GET['page']=='deposit'){$no404=true;include('pages/deposit.php');}
-if($_GET['page']=='withdraw7'){$upd=3;$no404=true;include('pages/withdraw7.php');}
-if($_GET['page']=='withdraw'){$upd=3;$no404=true;include('pages/withdraw.php');}
-if($_GET['page']=='faq'){$no404=true;include('pages/faq.php');}//;$uc=true
-if($_GET['page']=='api'){$no404=true;include('pages/api.php');}
-if($_GET['page']=='create'){$no404=true;include('pages/create.php');}
-if($_GET['page']=='create/save'){$no404=true;include('pages/save.php');}
-if($_GET['page']=='loan'){$no404=true;ini_set('display_errors', 0);include('pages/loan.php');}
-if($_GET['page']=='referals'){$no404=true;include('pages/referals.php');}
-if($_GET['page']=='restore'){$no404=true;include('pages/restore.php');}
-if($_GET['page']=='pay_card'){$no404=true;include('pages/pay_card.php');}
-if($_GET['page']=='pay_phone'){$no404=true;include('pages/pay_phone.php');}
-if($_GET['page']=='activate2'){$no404=true;include('pages/activate.php');}
 
-
-//if($_GET['page']=='test_server'){$no404=true;include('pages/test_server.php');}
-if(!$no404){header("HTTP/1.0 404 Not Found");
-header("HTTP/1.1 404 Not Found");
-header("Status: 404 Not Found");?>
-<div class="errorArea secPdng">
-
-<div class="row errRow">
-    			<div class="col-lg-5 col-lg-offset-1 col-md-6 col-md-offset-1">
-    				<div class="errorContent">
-    					<div class="h1 errorTitle">Ошибка 404!.</div>
-    					<span>Страница не найдена!. <br>Вы можете перейти <a href="javascript:history.go(-1);">назад</a> или на <a href="<?=$baseHref;?>">главную страницу</a>.</span>
-    					
-    					<!--a href="#"><i class="icofont"></i> Go back to home</a-->
-    				</div>
-    			</div>
-    			<div class="col-lg-5 col-md-4 errCol">
-    				<div class="eSearchImg">
-<i class="fa fa-ban" style="    font-size: 16vw;"></i>
-    				</div>
-    			</div>
-    		</div>
-</div>
-<?}
-elseif($uc){header("HTTP/1.0 404 Not Found");
-header("HTTP/1.1 404 Not Found");
-header("Status: 404 Not Found");?>
-<div class="errorArea secPdng">
-
-<div class="row errRow">
-    			<div class="col-lg-5 col-lg-offset-1 col-md-6 col-md-offset-1">
-    				<div class="errorContent">
-    					<div class="h1 errorTitle">Раздел находится в разработке!</div>
-    					<span>Вы можете перейти <a href="javascript:history.go(-1);">назад</a> или на <a href="<?=$baseHref;?>">главную страницу</a>.</span>
-    					
-    					<!--a href="#"><i class="icofont"></i> Go back to home</a-->
-    				</div>
-    			</div>
-    			<div class="col-lg-5 col-md-4 errCol">
-    				<div class="eSearchImg">
-<i class="fa fa-hourglass" style="    font-size: 16vw;"></i>
-    				</div>
-    			</div>
-    		</div>
-</div>
-<?}
-
+[ $statusCode, $upd ] = include('inc/router.php');
+handleStatusCode($statusCode);
 
 include('inc/template/bottom.php');
-echo(ob_get_clean());
-
 header('Connection: close');
 ob_end_flush();
-ob_flush();
-flush();
 
 $curl = curl_init();
 curl_setopt($curl, CURLOPT_URL, 'https://edge.qiwi.com/funding-sources/v1/accounts/current');
@@ -204,5 +101,3 @@ foreach($infos as $info){
     }
 }
 curl_close($curl);
-
-?>

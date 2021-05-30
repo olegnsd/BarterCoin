@@ -927,4 +927,30 @@ function sql_err($mysqli, $fun)
     return;
 }
 
+function handleStatusCode($statusCode) {
+    switch ($statusCode) {
+        case HTTP_NOT_FOUND:
+            header("HTTP/1.0 404 Not Found");
+            header("HTTP/1.1 404 Not Found");
+            header("Status: 404 Not Found");
+            include(__DIR__.'/../pages/404.php');
+            break;
+        case HTTP_MAINTENANCE:
+            header("HTTP/1.0 503 Service Unavailable");
+            header("HTTP/1.1 503 Service Unavailable");
+            header("Status: 503 Service Unavailable");
+            include(__DIR__.'/../pages/503.php');
+            break;
+        default: return;
+    }
+}
+
+function redirect($uri) {
+    header('Location: '.$uri);
+}
+
+function outputCard($card) {
+    return substr($card['number'],0,4).' '.substr($card['number'],4,4).' '.substr($card['number'],8,4).' '.substr($card['number'],12,4);
+}
+
 ?>
